@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обчислення ступеня числа</title>
+</head>
+<body>
+    <div id="powerCalculationContainer">
+        <h2>Обчислення ступеня числа</h2>
+        <form id="powerCalculationForm">
+            <label for="baseInput">Введіть число (основа): </label>
+            <input type="number" id="baseInput" required>
+
+            <label for="exponentInput">Введіть ступінь: </label>
+            <input type="number" id="exponentInput" required>
+
+            <button type="button" onclick="calculatePower()">Обчислити ступінь</button>
+            <p id="resultMessage"></p>
+        </form>
+<style type="text/css">
+    body
+    {
+background-color: #000000;
+    }
+    div{
+        background-color: #5fcfec;        
+        padding: 10px;
+        border-radius: 25px;
+        border: 5px solid #bf1c1c;
+         position: absolute;
+
+  top: 30%;
+
+  left: 30%;
+    }
+    button
+    {
+        border-radius: 3px;
+        border: 1px solid #bf1c1c;
+        background-color: #69aaea;
+        
+    }
+</style>
+        <script>
+            function calculatePower() {
+                // Отримуємо число та ступінь від користувача
+                let base = parseFloat(document.getElementById("baseInput").value);
+                let exponent = parseInt(document.getElementById("exponentInput").value, 10);
+                let resultMessage = document.getElementById("resultMessage");
+
+                // Перевіряємо, чи введені числа коректні
+                if (!isNaN(base) && !isNaN(exponent)) {
+                    // Обчислюємо ступінь числа
+                    let result = Math.pow(base, exponent);
+
+                    resultMessage.innerHTML = "Результат обчислення " + base + " в ступені " + exponent + " дорівнює: " + result;
+                } else {
+                    resultMessage.innerHTML = "Введіть коректні числа.";
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>

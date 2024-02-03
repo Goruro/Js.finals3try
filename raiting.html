@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оцінка в дванадцятибальній шкалі</title>
+</head>
+<body>
+    <style type="text/css">
+    body
+    {
+background-color: #000000;
+    }
+    div{
+        background-color: #5fcfec;        
+        padding: 10px;
+        border-radius: 25px;
+        border: 5px solid #bf1c1c;
+         position: absolute;
+
+  top: 30%;
+
+  left: 30%;
+    }
+    button
+    {
+        border-radius: 3px;
+        border: 1px solid #bf1c1c;
+        background-color: #69aaea;
+        
+    }
+</style>
+    <div id="ratingContainer">
+        <h2>Оцінка в дванадцятибальній шкалі</h2>
+        <form id="ratingForm">
+            <label for="ratingInput">Введіть вашу оцінку (від 1 до 12): </label>
+            <input type="number" id="ratingInput" min="1" max="12" required>
+
+            <button type="button" onclick="checkRating()">Перевірити рівень</button>
+            <p id="resultMessage"></p>
+        </form>
+
+        <script>
+            function checkRating() {
+                // Отримуємо оцінку від користувача
+                let userRating = parseInt(document.getElementById("ratingInput").value, 10);
+                let resultMessage = document.getElementById("resultMessage");
+
+                // Перевіряємо, чи введена оцінка в діапазоні від 1 до 12
+                if (userRating >= 1 && userRating <= 12) {
+                    // Визначаємо рівень на основі введеної оцінки
+                    let level;
+                    if (userRating <= 4) {
+                        level = "Початковий рівень";
+                    } else if (userRating <= 8) {
+                        level = "Достатній рівень";
+                    } else {
+                        level = "Високий рівень";
+                    }
+
+                    resultMessage.innerHTML = "Ваш рівень: " + level;
+                } else {
+                    resultMessage.innerHTML = "Введіть оцінку від 1 до 12.";
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>

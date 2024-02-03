@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci Calculator</title>
+</head>
+<body>
+    <div>
+        <h2>Введите кількість чисел Фибоначчі:</h2>
+    <form id="fibonacciForm">
+        <label for="count">Кількість:</label>
+        <input type="number" id="count" name="count" min="1" required>
+        <button type="submit">Генерувати</button>
+    </form>
+
+    <h3>Результат:</h3>
+    <p id="fibonacciResult"></p>
+    </div>
+<style type="text/css">
+    body
+    {
+background-color: #000000;
+    }
+    div{
+        background-color: #5fcfec;
+        padding: 10px;
+        border-radius: 25px;
+        border: 5px solid #bf1c1c;
+         position: absolute;
+
+  top: 30%;
+
+  left: 30%;
+    }
+    button
+    {
+        border-radius: 3px;
+        border: 1px solid #bf1c1c;
+        background-color: #69aaea;
+        
+    }
+</style>
+    <script>
+        document.getElementById('fibonacciForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const count = parseInt(document.getElementById('count').value);
+
+            if (!isNaN(count) && count > 0) {
+                let fibonacciNumbers = [0, 1];
+
+                for (let i = 2; i < count; i++) {
+                    fibonacciNumbers[i] = fibonacciNumbers[i - 1] + fibonacciNumbers[i - 2];
+                }
+
+                document.getElementById('fibonacciResult').innerText = `Первые ${count} чисел Фибоначчи: ${fibonacciNumbers.join(', ')}`;
+            } else {
+                document.getElementById('fibonacciResult').innerText = "Пожалуйста, введите корректное положительное число.";
+            }
+        });
+    </script>
+</body>
+</html>

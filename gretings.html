@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лічильник привітань</title>
+</head>
+<body>
+    <style type="text/css">
+    body
+    {
+background-color: #000000;
+    }
+    div{
+        background-color: #5fcfec;        
+        padding: 10px;
+        border-radius: 25px;
+        border: 5px solid #bf1c1c;
+         position: absolute;
+
+  top: 30%;
+
+  left: 30%;
+    }
+    button
+    {
+        border-radius: 3px;
+        border: 1px solid #bf1c1c;
+        background-color: #69aaea;
+        
+    }
+</style>
+    <div><h2>Введіть кількість привітань:</h2>
+    <form id="greetingsForm">
+        <label for="greetingsCount">Кількість:</label>
+        <input type="number" id="greetingsCount" name="greetingsCount" min="1" required>
+        <button type="submit">Підтвердити</button>
+    </form>
+
+    <h3>Привітання:</h3>
+    <p id="greetingsList"></p>
+
+    <h3>Опис кількості привітань:</h3>
+    <p id="greetingsDescription"></p>
+</div>
+    <script>
+        document.getElementById('greetingsForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const greetingsCount = parseInt(document.getElementById('greetingsCount').value);
+
+            if (!isNaN(greetingsCount) && greetingsCount > 0) {
+                let greetingsArray = [];
+
+                for (let i = 0; i < greetingsCount; i++) {
+                    greetingsArray.push(`${i + 1}<br>) Слава Україні`);
+                }
+
+                document.getElementById('greetingsList').innerText = greetingsArray.join(', ');
+
+                let description = `Україну прославили ${greetingsCount} `;
+
+                switch (true) {
+                    case greetingsCount === 1:
+                        description += 'раз';
+                        break;
+                    case greetingsCount >= 11 && greetingsCount <= 19:
+                        description += 'разів';
+                        break;
+                    default:
+                        const lastDigit = greetingsCount % 10;
+                        switch (lastDigit) {
+                            case 1:
+                                description += 'раз';
+                                break;
+                            case 2:
+                            case 3:
+                            case 4:
+                                description += 'рази';
+                                break;
+                            default:
+                                description += 'разів';
+                        }
+                }
+
+                document.getElementById('greetingsDescription').innerText = description;
+            } else {
+                document.getElementById('greetingsList').innerText = '';
+                document.getElementById('greetingsDescription').innerText = "Будь ласка, введіть коректне додатнє число.";
+            }
+        });
+    </script>
+</body>
+</html>

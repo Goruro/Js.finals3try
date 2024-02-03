@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пошук "бесплатно"</title>
+</head>
+<body>
+    <div id="searchFreeContainer">
+        <h2>Пошук "бесплатно"</h2>
+        <form id="searchFreeForm">
+            <label for="textInput">Введіть текст: </label>
+            <textarea id="textInput" rows="4" required></textarea>
+
+            <button type="button" onclick="searchFree()">Шукати "бесплатно"</button>
+            <p id="resultMessage"></p>
+        </form>
+<style type="text/css">
+    body
+    {
+background-color: #000000;
+    }
+    div{
+        background-color: #5fcfec;        
+        padding: 10px;
+        border-radius: 25px;
+        border: 5px solid #bf1c1c;
+         position: absolute;
+
+  top: 30%;
+
+  left: 30%;
+    }
+    button
+    {
+        border-radius: 3px;
+        border: 1px solid #bf1c1c;
+        background-color: #69aaea;
+        
+    }
+</style>
+        <script>
+            function searchFree() {
+                // Отримуємо текст від користувача
+                let userText = document.getElementById("textInput").value.toLowerCase();
+                let resultMessage = document.getElementById("resultMessage");
+
+                // Перевіряємо, чи в тексті є слово "бесплатно"
+                if (userText.includes("бесплатно")) {
+                    resultMessage.innerHTML = "Знайдено слово 'бесплатно' у введеному тексті.";
+                } else {
+                    resultMessage.innerHTML = "Слово 'бесплатно' не знайдено у введеному тексті.";
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>

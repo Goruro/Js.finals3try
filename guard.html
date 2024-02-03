@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+</head>
+<body>
+    <style type="text/css">
+    body
+    {
+background-color: #000000;
+    }
+    div{
+        background-color: #5fcfec;        
+        padding: 10px;
+        border-radius: 25px;
+        border: 5px solid #bf1c1c;
+         position: absolute;
+
+  top: 30%;
+
+  left: 30%;
+    }
+    button
+    {
+        border-radius: 3px;
+        border: 1px solid #bf1c1c;
+        background-color: #69aaea;
+        
+    }
+</style>
+    <div id="loginContainer">
+         <form id="loginForm">
+            <label for="loginInput">Логін:</label>
+            <input type="text" id="loginInput" required>
+
+            <label for="passwordInput">Пароль:</label>
+            <input type="text" id="passwordInput" required>
+
+            <button type="button" onclick="login()">Увійти</button>
+        </form>
+</div>
+        <script>
+            function login() {
+                // Отримуємо значення логіна та пароля з форми
+                let enteredLogin = document.getElementById("loginInput").value;
+                let enteredPassword = document.getElementById("passwordInput").value;
+
+                // Перевіряємо, чи відповідають введені дані очікуваним значенням
+                if (enteredLogin === "User" && enteredPassword === "password") {
+                    // Виводимо привітання та введений пароль
+                    document.write("<h1>Привіт, " + enteredLogin + "!</h1>");
+                    document.write("<p>Ваш пароль: " + enteredPassword + "</p>");
+                } else {
+                    // Виводимо повідомлення про помилку
+                    document.write("<p>Невірний логін або пароль. Спробуйте ще раз.</p>");
+                }
+            }
+        </script>
+    
+</body>
+</html>

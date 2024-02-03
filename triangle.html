@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triangle Calculator</title>
+</head>
+<body>
+    <style type="text/css">
+    body
+    {
+background-color: #000000;
+    }
+    div{
+        background-color: #5fcfec;        
+        padding: 10px;
+        border-radius: 25px;
+        border: 5px solid #bf1c1c;
+         position: absolute;
+
+  top: 30%;
+
+  left: 30%;
+    }
+    button
+    {
+        border-radius: 3px;
+        border: 1px solid #bf1c1c;
+        background-color: #69aaea;
+        
+    }
+</style>
+    <div>
+    <h2>Введіть довжини сторін трикутника:</h2>
+    <form id="triangleForm">
+        <label for="sideA">Сторона A:</label>
+        <input type="number" id="sideA" name="sideA" min="0" required><br>
+
+        <label for="sideB">Сторона B:</label>
+        <input type="number" id="sideB" name="sideB" min="0" required><br>
+
+        <label for="sideC">Сторона C:</label>
+        <input type="number" id="sideC" name="sideC" min="0" required><br>
+
+        <button type="submit">Розрахувати</button>
+    </form>
+
+    <h3>Результат:</h3>
+    <p id="triangleResult"></p>
+</div>
+    <script>
+        document.getElementById('triangleForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const sideA = parseFloat(document.getElementById('sideA').value);
+            const sideB = parseFloat(document.getElementById('sideB').value);
+            const sideC = parseFloat(document.getElementById('sideC').value);
+
+            if (!isNaN(sideA) && !isNaN(sideB) && !isNaN(sideC) && sideA > 0 && sideB > 0 && sideC > 0) {
+                const perimeter = sideA + sideB + sideC;
+                const s = perimeter / 2;
+                const area = Math.sqrt(s * (s - sideA) * (s - sideB) * (s - sideC));
+
+                document.getElementById('triangleResult').innerText = `Периметр: ${perimeter}, Площадь: ${area.toFixed(2)}`;
+            } else {
+                document.getElementById('triangleResult').innerText = "такого трикутника не існує";
+            }
+        });
+    </script>
+</body>
+</html>

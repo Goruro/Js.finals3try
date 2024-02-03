@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обчислення суми чисел у діапазоні</title>
+</head>
+<body>
+    <div id="sumContainer">
+        <h2>Обчислення суми чисел у діапазоні</h2>
+        <form id="sumForm">
+            <label for="startInput">Початкове число: </label>
+            <input type="number" id="startInput" required>
+
+            <label for="endInput">Кінцеве число: </label>
+            <input type="number" id="endInput" required>
+
+            <button type="button" onclick="calculateSum()">Обчислити суму</button>
+            <p id="resultMessage"></p>
+        </form>
+<style type="text/css">
+    body
+    {
+background-color: #000000;
+    }
+    div{
+        background-color: #5fcfec;        
+        padding: 10px;
+        border-radius: 25px;
+        border: 5px solid #bf1c1c;
+         position: absolute;
+
+  top: 30%;
+
+  left: 30%;
+    }
+    button
+    {
+        border-radius: 3px;
+        border: 1px solid #bf1c1c;
+        background-color: #69aaea;
+        
+    }
+</style>
+        <script>
+            function calculateSum() {
+                // Отримуємо початкове і кінцеве числа від користувача
+                let startNumber = parseInt(document.getElementById("startInput").value, 10);
+                let endNumber = parseInt(document.getElementById("endInput").value, 10);
+                let resultMessage = document.getElementById("resultMessage");
+
+                // Перевіряємо, чи введені числа коректні
+                if (!isNaN(startNumber) && !isNaN(endNumber)) {
+                    // Обчислюємо суму чисел у діапазоні
+                    let sumResult = 0;
+                    for (let i = startNumber; i <= endNumber; i++) {
+                        sumResult += i;
+                    }
+
+                    resultMessage.innerHTML = "Сума чисел у діапазоні від " + startNumber + " до " + endNumber + " дорівнює: " + sumResult;
+                } else {
+                    resultMessage.innerHTML = "Введіть коректні числа.";
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>

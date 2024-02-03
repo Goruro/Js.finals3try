@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обчислення факторіалу</title>
+</head>
+<body>
+    <div id="factorialContainer">
+        <h2>Обчислення факторіалу</h2>
+        <form id="factorialForm">
+            <label for="numberInput">Введіть число для обчислення факторіалу: </label>
+            <input type="number" id="numberInput" min="0" required>
+
+            <button type="button" onclick="calculateFactorial()">Обчислити факторіал</button>
+            <p id="resultMessage"></p>
+        </form>
+<style type="text/css">
+    body
+    {
+background-color: #000000;
+    }
+    div{
+        background-color: #5fcfec;        
+        padding: 10px;
+        border-radius: 25px;
+        border: 5px solid #bf1c1c;
+         position: absolute;
+
+  top: 30%;
+
+  left: 30%;
+    }
+    button
+    {
+        border-radius: 3px;
+        border: 1px solid #bf1c1c;
+        background-color: #69aaea;
+        
+    }
+</style>
+        <script>
+            function calculateFactorial() {
+                // Отримуємо число від користувача
+                let userNumber = parseInt(document.getElementById("numberInput").value, 10);
+                let resultMessage = document.getElementById("resultMessage");
+
+                // Перевіряємо, чи введене число не менше 0
+                if (userNumber >= 0) {
+                    // Обчислюємо факторіал
+                    let factorialResult = 1;
+                    for (let i = 2; i <= userNumber; i++) {
+                        factorialResult *= i;
+                    }
+
+                    resultMessage.innerHTML = "Факторіал " + userNumber + " дорівнює: " + factorialResult;
+                } else {
+                    resultMessage.innerHTML = "Введіть число, яке не менше 0.";
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>

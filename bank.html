@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Банкомат</title>
+</head>
+<body>
+    <div id="atmContainer">
+        <h2>Банкомат</h2>
+        <form id="atmForm">
+            <label for="withdrawalInput">Введіть суму для зняття (кратну 50): </label>
+            <input type="number" id="withdrawalInput" required>
+
+            <button type="button" onclick="withdrawCash()">Зняти гроші</button>
+            <p id="resultMessage"></p>
+        </form>
+<style type="text/css">
+    body
+    {
+background-color: #000000;
+    }
+    div{
+        background-color: #5fcfec;        
+        padding: 10px;
+        border-radius: 25px;
+        border: 5px solid #bf1c1c;
+         position: absolute;
+
+  top: 30%;
+
+  left: 30%;
+    }
+    button
+    {
+        border-radius: 3px;
+        border: 1px solid #bf1c1c;
+        background-color: #69aaea;
+        
+    }
+</style>
+        <script>
+            function withdrawCash() {
+                // Отримуємо суму для зняття від користувача
+                let withdrawalAmount = parseInt(document.getElementById("withdrawalInput").value, 10);
+                let resultMessage = document.getElementById("resultMessage");
+
+                // Перевіряємо, чи сума кратна 50
+                if (!isNaN(withdrawalAmount) && withdrawalAmount % 50 === 0) {
+                    resultMessage.innerHTML = "Ви зняли " + withdrawalAmount + " грн.";
+                } else {
+                    // Забираємо різницю, якщо сума не кратна 50
+                    let difference = withdrawalAmount % 50;
+                    let newAmount = withdrawalAmount - difference;
+
+                    resultMessage.innerHTML = "Банк забирає " + difference + " грн. Знято " + newAmount + " грн.";
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>

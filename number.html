@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Підрахунок кількості цифр</title>
+</head>
+<body>
+    <div id="digitCountContainer">
+        <h2>Підрахунок кількості цифр</h2>
+        <form id="digitCountForm">
+            <label for="numberInput">Введіть число: </label>
+            <input type="number" id="numberInput" required>
+
+            <button type="button" onclick="countDigits()">Підрахувати кількість цифр</button>
+            <p id="resultMessage"></p>
+        </form>
+<style type="text/css">
+    body
+    {
+background-color: #000000;
+    }
+    div{
+        background-color: #5fcfec;        
+        padding: 10px;
+        border-radius: 25px;
+        border: 5px solid #bf1c1c;
+         position: absolute;
+
+  top: 30%;
+
+  left: 30%;
+    }
+    button
+    {
+        border-radius: 3px;
+        border: 1px solid #bf1c1c;
+        background-color: #69aaea;
+        
+    }
+</style>
+        <script>
+            function countDigits() {
+                // Отримуємо число від користувача
+                let userNumber = document.getElementById("numberInput").value;
+                let resultMessage = document.getElementById("resultMessage");
+
+                // Перевіряємо, чи введено число
+                if (!isNaN(userNumber)) {
+                    // Перетворюємо число в рядок та обчислюємо його довжину (кількість цифр)
+                    let digitCount = userNumber.toString().length;
+
+                    resultMessage.innerHTML = "Кількість цифр у числі " + userNumber + " дорівнює: " + digitCount;
+                } else {
+                    resultMessage.innerHTML = "Введіть коректне число.";
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>

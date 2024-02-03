@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Визначення пори року</title>
+</head>
+<body>
+    <div id="seasonCheckContainer">
+        <h2>Визначення пори року</h2>
+        <form id="seasonCheckForm">
+            <label for="monthInput">Введіть номер місяця (від 1 до 12): </label>
+            <input type="number" id="monthInput" min="1" max="12" required>
+
+            <button type="button" onclick="checkSeason()">Визначити пору року</button>
+            <p id="resultMessage"></p>
+        </form>
+<style type="text/css">
+    body
+    {
+background-color: #000000;
+    }
+    div{
+        background-color: #5fcfec;        
+        padding: 10px;
+        border-radius: 25px;
+        border: 5px solid #bf1c1c;
+         position: absolute;
+
+  top: 30%;
+
+  left: 30%;
+    }
+    button
+    {
+        border-radius: 3px;
+        border: 1px solid #bf1c1c;
+        background-color: #69aaea;
+        
+    }
+</style>
+        <script>
+            function checkSeason() {
+                // Отримуємо номер місяця від користувача
+                let monthNumber = parseInt(document.getElementById("monthInput").value, 10);
+                let resultMessage = document.getElementById("resultMessage");
+
+                // Перевіряємо, чи введений номер місяця коректний
+                if (!isNaN(monthNumber) && monthNumber >= 1 && monthNumber <= 12) {
+                    // Визначаємо пору року за допомогою switch
+                    let season;
+                    switch (monthNumber) {
+                        case 1:
+                        case 2:
+                        case 12:
+                            season = "зима";
+                            break;
+                        case 3:
+                        case 4:
+                        case 5:
+                            season = "весна";
+                            break;
+                        case 6:
+                        case 7:
+                        case 8:
+                            season = "літо";
+                            break;
+                        case 9:
+                        case 10:
+                        case 11:
+                            season = "осінь";
+                            break;
+                        default:
+                            season = "невідома";
+                            break;
+                    }
+
+                    resultMessage.innerHTML = "Пора року для місяця " + monthNumber + " - " + season + ".";
+                } else {
+                    resultMessage.innerHTML = "Введіть коректний номер місяця (від 1 до 12).";
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Виведення чисел у діапазоні</title>
+</head>
+<body>
+    <div id="numberRangeContainer">
+        <h2>Виведення чисел у діапазоні</h2>
+        <form id="numberRangeForm">
+            <label for="startInput">Початкове число: </label>
+            <input type="number" id="startInput" required>
+
+            <label for="endInput">Кінцеве число: </label>
+            <input type="number" id="endInput" required>
+
+            <button type="button" onclick="displayNumbers()">Вивести числа</button>
+            <p id="resultMessage"></p>
+        </form>
+<style type="text/css">
+    body
+    {
+background-color: #000000;
+    }
+    div{
+        background-color: #5fcfec;        
+        padding: 10px;
+        border-radius: 25px;
+        border: 5px solid #bf1c1c;
+         position: absolute;
+
+  top: 30%;
+
+  left: 30%;
+    }
+    button
+    {
+        border-radius: 3px;
+        border: 1px solid #bf1c1c;
+        background-color: #69aaea;
+        
+    }
+</style>
+        <script>
+            function displayNumbers() {
+                // Отримуємо початкове і кінцеве числа від користувача
+                let startNumber = parseInt(document.getElementById("startInput").value, 10);
+                let endNumber = parseInt(document.getElementById("endInput").value, 10);
+                let resultMessage = document.getElementById("resultMessage");
+
+                // Перевіряємо, чи введені числа коректні
+                if (!isNaN(startNumber) && !isNaN(endNumber)) {
+                    // Виводимо числа у діапазоні
+                    let numbers = [];
+                    for (let i = startNumber; i <= endNumber; i++) {
+                        numbers.push(i);
+                    }
+
+                    resultMessage.innerHTML = "Числа у діапазоні від " + startNumber + " до " + endNumber + ": " + numbers.join(', ');
+                } else {
+                    resultMessage.innerHTML = "Введіть коректні числа.";
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>
